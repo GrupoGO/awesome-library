@@ -47,7 +47,7 @@ public class AwesomeFunction {
                 actionBar.setTitle(title);
             }
 
-           /** if (drawerLayout!=null) {
+            if (drawerLayout!=null) {
                 ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(
                         activity,  drawerLayout, toolbar,
                         R.string.open_drawer, R.string.close_drawer
@@ -56,7 +56,7 @@ public class AwesomeFunction {
                 actionBar.setDisplayHomeAsUpEnabled(true);
                 actionBar.setHomeButtonEnabled(true);
                 mDrawerToggle.syncState();
-            }**/
+            }
         }
 
         return actionBar;
