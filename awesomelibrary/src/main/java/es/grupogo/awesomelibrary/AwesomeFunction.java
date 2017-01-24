@@ -33,8 +33,7 @@ import java.util.Locale;
 
 public class AwesomeFunction {
 
-    private static final String TYPE_PICTURE = "picture";
-    private static final String TYPE_VIDEO = "video";
+
 
     public static ActionBar setupToolbar(AppCompatActivity activity, Toolbar toolbar, String title, @Nullable DrawerLayout drawerLayout) {
 
@@ -63,7 +62,7 @@ public class AwesomeFunction {
     }
 
     /**
-     * dp to pixels converter
+     * Convert dp to pixels
      * @param context context of the activity
      * @param dps number of dps to convert
      * @return number of pixels equivalent to the number of dps provided
@@ -132,81 +131,5 @@ public class AwesomeFunction {
 
         return outMetrics.widthPixels;
     }
-
-
-    // region CAMERA MANAGER
-    //----------------------------------------------------------------------
-
-
-    /**
-     * This function prepares an intent to take a picture
-     * @param context context of the activity
-     * @return intent with the extra_output to do the startActivityForResult
-     * @throws IOException
-     */
-    public Intent takePicture(Context context) throws IOException {
-
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        File photoFile = createFile(TYPE_PICTURE);
-        Uri photoURI = FileProvider.getUriForFile(context,
-                context.getPackageName(),
-                photoFile);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-
-        return intent;
-    }
-
-    /**
-     * This function prepares an intent to take a video
-     * @param context context of the activity
-     * @return intent with the extra_output to do the startActivityForResult
-     * @throws IOException
-     */
-    public Intent takeVideo(Context context) throws IOException {
-
-        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-
-        File photoFile = createFile(TYPE_VIDEO);
-        Uri photoURI = FileProvider.getUriForFile(context,
-                context.getPackageName(),
-                photoFile);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-
-        return intent;
-    }
-
-
-    /**
-     * This function creates a file form a given type
-     * @param type "picture" or "video"
-     * @return
-     * @throws IOException
-     */
-    private File createFile(String type) throws IOException {
-
-        File fileDirectory = null;
-        if (type.equals(TYPE_PICTURE)) {
-            fileDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        } else if (type.equals(TYPE_VIDEO)) {
-            fileDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
-        }
-
-        File mediaFile = null;
-        String timestamp = new Date().toString();
-        if (type.equals(TYPE_PICTURE)) {
-            mediaFile = File.createTempFile(String.format(Locale.US, "IMG_%s", timestamp), ".jpg", fileDirectory);
-        } else if (type.equals(TYPE_VIDEO)) {
-            mediaFile = File.createTempFile(String.format(Locale.US, "VID_%s", timestamp), ".mp4", fileDirectory);
-        }
-
-        Log.i("camera", mediaFile.getAbsolutePath());
-
-
-        return mediaFile;
-    }
-
-    //----------------------------------------------------------------------
-    //endregion
 
 }
