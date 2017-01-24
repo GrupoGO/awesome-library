@@ -70,6 +70,7 @@ public class AwesomeFunction {
      */
     public static int dpToPx(Context context, int dps) {
         return Math.round(context.getResources().getDisplayMetrics().density * dps);
+
     }
 
     /**
