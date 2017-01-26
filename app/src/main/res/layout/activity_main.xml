@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="es.grupogo.awesomelibraryexample.MainActivity">
 
-    <es.grupogo.awesomelibrary.BadgeView
+   <!-- <es.grupogo.awesomelibrary.BadgeView
         android:id="@+id/badgeview"
         xmlns:badge_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
@@ -18,5 +18,10 @@
         badge_view:badge_fillColor="@color/colorPrimary"
         badge_view:badge_text="New!"
         badge_view:badge_textColor="@color/colorAccent"
-        badge_view:badge_textSize="12"/>
+        badge_view:badge_textSize="12"/> -->
+
+    <es.grupogo.awesomelibrary.StickyHeader.StickyHeaderRecyclerView
+        android:id="@+id/sticky_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

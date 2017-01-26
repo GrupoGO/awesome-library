@@ -8,4 +8,11 @@
         <attr name="badge_textColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="stickyheader">
+        <attr name="sticky_text" format="string" />
+        <attr name="sticky_textSize" format="integer" />
+        <attr name="sticky_fillColor" format="color" />
+        <attr name="sticky_textColor" format="color" />
+    </declare-styleable>
+
 </resources>
