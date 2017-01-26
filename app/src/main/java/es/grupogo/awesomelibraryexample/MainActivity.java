@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_4:
                 SingleSelectionAlertDialog.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}, 0, "Ok", "Cancel").show(getSupportFragmentManager(), TAG_DIALOG);
                 break;
-
         }
     }
 
