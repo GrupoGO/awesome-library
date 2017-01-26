@@ -17,13 +17,14 @@ import java.util.Arrays;
  * Created by Carlos Olmedo on 25/1/17.
  */
 
-public class MultiSelectionAlertDialog extends DialogFragment implements DialogInterface.OnClickListener, DialogInterface.OnMultiChoiceClickListener{
+public class MultiSelectionnAlertDialog extends DialogFragment implements DialogInterface.OnClickListener, DialogInterface.OnMultiChoiceClickListener{
 
     private static final String PARAM_TITLE = "param_title";
     private static final String PARAM_POSITIVE = "param_positive";
     private static final String PARAM_NEGATIVE = "param_negative";
     private static final String PARAM_ITEMS = "param_items";
     private static final String PARAM_SELECTED_ITEMS = "param_selected_items";
+
 
 
     public interface CustomDialogCallback {
@@ -38,7 +39,7 @@ public class MultiSelectionAlertDialog extends DialogFragment implements DialogI
     private boolean[] selectedItems;
 
 
-    public static MultiSelectionAlertDialog newInstance(String title, String[] items, @Nullable boolean[] selectedItems, String positiveButtonString, String negativeButtonString) {
+    public static MultiSelectionnAlertDialog newInstance(String title, String[] items, @Nullable boolean[] selectedItems, String positiveButtonString, String negativeButtonString) {
 
         Bundle args = new Bundle();
         args.putString(PARAM_TITLE, title);
@@ -47,7 +48,7 @@ public class MultiSelectionAlertDialog extends DialogFragment implements DialogI
         args.putStringArray(PARAM_ITEMS, items);
         args.putBooleanArray(PARAM_SELECTED_ITEMS, selectedItems);
 
-        MultiSelectionAlertDialog fragment = new MultiSelectionAlertDialog();
+        MultiSelectionnAlertDialog fragment = new MultiSelectionnAlertDialog();
         fragment.setArguments(args);
         return fragment;
     }
