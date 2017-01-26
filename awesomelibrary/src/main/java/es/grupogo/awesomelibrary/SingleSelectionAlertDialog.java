@@ -17,37 +17,51 @@ import java.util.Arrays;
  * Created by Carlos Olmedo on 25/1/17.
  */
 
-public class MultiSelectionAlertDialog extends DialogFragment implements DialogInterface.OnClickListener, DialogInterface.OnMultiChoiceClickListener{
+public class SingleSelectionAlertDialog extends DialogFragment implements DialogInterface.OnClickListener {
 
     private static final String PARAM_TITLE = "param_title";
     private static final String PARAM_POSITIVE = "param_positive";
     private static final String PARAM_NEGATIVE = "param_negative";
     private static final String PARAM_ITEMS = "param_items";
-    private static final String PARAM_SELECTED_ITEMS = "param_selected_items";
+    private static final String PARAM_CHECKED_ITEM = "param_checked_item";
 
 
     public interface CustomDialogCallback {
 
-        void onDialogPositiveClick(DialogFragment dialog, boolean[] selectedItems);
+        void onDialogPositiveClick(DialogFragment dialog, int selectedItem);
         void onDialogNegativeClick(DialogFragment dialog);
     }
 
     private String title, positiveButtonString, negativeButtonString;
     private CustomDialogCallback callback;
     private String[] items;
-    private boolean[] selectedItems;
+    private int checkedItem = -1;
 
 
-    public static MultiSelectionAlertDialog newInstance(String title, String[] items, @Nullable boolean[] selectedItems, String positiveButtonString, String negativeButtonString) {
+    public static SingleSelectionAlertDialog newInstance(String title, String[] items, int checkedItem, String positiveButtonString, String negativeButtonString) {
 
         Bundle args = new Bundle();
         args.putString(PARAM_TITLE, title);
         args.putString(PARAM_POSITIVE, positiveButtonString);
         args.putString(PARAM_NEGATIVE, negativeButtonString);
         args.putStringArray(PARAM_ITEMS, items);
-        args.putBooleanArray(PARAM_SELECTED_ITEMS, selectedItems);
+        args.putInt(PARAM_CHECKED_ITEM, checkedItem);
 
-        MultiSelectionAlertDialog fragment = new MultiSelectionAlertDialog();
+        SingleSelectionAlertDialog fragment = new SingleSelectionAlertDialog();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static SingleSelectionAlertDialog newInstance(String title, String[] items, String positiveButtonString, String negativeButtonString) {
+
+        Bundle args = new Bundle();
+        args.putString(PARAM_TITLE, title);
+        args.putString(PARAM_POSITIVE, positiveButtonString);
+        args.putString(PARAM_NEGATIVE, negativeButtonString);
+        args.putStringArray(PARAM_ITEMS, items);
+        args.putInt(PARAM_CHECKED_ITEM, -1);
+
+        SingleSelectionAlertDialog fragment = new SingleSelectionAlertDialog();
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,12 +78,8 @@ public class MultiSelectionAlertDialog extends DialogFragment implements DialogI
             positiveButtonString = args.getString(PARAM_POSITIVE);
             negativeButtonString = args.getString(PARAM_NEGATIVE);
             items = args.getStringArray(PARAM_ITEMS);
-            selectedItems = args.getBooleanArray(PARAM_SELECTED_ITEMS);
+            checkedItem = args.getInt(PARAM_CHECKED_ITEM);
 
-            if (items!=null && selectedItems==null) {
-                selectedItems = new boolean[items.length];
-                Arrays.fill(selectedItems, Boolean.FALSE);
-            }
         }
     }
 
@@ -118,10 +128,7 @@ public class MultiSelectionAlertDialog extends DialogFragment implements DialogI
         }
 
         if (items != null) {
-
-            if (selectedItems!=null) {
-                builder.setMultiChoiceItems(items, selectedItems, this);
-            }
+             builder.setSingleChoiceItems(items, checkedItem, this);
         }
 
         AlertDialog dialog = builder.create();
@@ -132,9 +139,14 @@ public class MultiSelectionAlertDialog extends DialogFragment implements DialogI
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {
 
+        if (i>=0) {
+            checkedItem = i;
+            return;
+        }
+
         switch (i) {
             case DialogInterface.BUTTON_POSITIVE:
-                callback.onDialogPositiveClick(this, selectedItems);
+                callback.onDialogPositiveClick(this, checkedItem);
                 break;
             case DialogInterface.BUTTON_NEGATIVE:
                 callback.onDialogNegativeClick(this);
@@ -143,9 +155,4 @@ public class MultiSelectionAlertDialog extends DialogFragment implements DialogI
         }
     }
 
-
-    @Override
-    public void onClick(DialogInterface dialogInterface, int position, boolean selected) {
-        selectedItems[position] = selected;
-    }
 }
