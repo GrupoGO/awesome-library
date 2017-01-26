@@ -17,7 +17,7 @@ import java.util.Arrays;
  * Created by Carlos Olmedo on 25/1/17.
  */
 
-public class MultiSelectionnAlertDialog extends DialogFragment implements DialogInterface.OnClickListener, DialogInterface.OnMultiChoiceClickListener{
+public class MultiSelectionAlertDialog extends DialogFragment implements DialogInterface.OnClickListener, DialogInterface.OnMultiChoiceClickListener{
 
     private static final String PARAM_TITLE = "param_title";
     private static final String PARAM_POSITIVE = "param_positive";
@@ -39,7 +39,7 @@ public class MultiSelectionnAlertDialog extends DialogFragment implements Dialog
     private boolean[] selectedItems;
 
 
-    public static MultiSelectionnAlertDialog newInstance(String title, String[] items, @Nullable boolean[] selectedItems, String positiveButtonString, String negativeButtonString) {
+    public static MultiSelectionAlertDialog newInstance(String title, String[] items, @Nullable boolean[] selectedItems, String positiveButtonString, String negativeButtonString) {
 
         Bundle args = new Bundle();
         args.putString(PARAM_TITLE, title);
@@ -48,7 +48,7 @@ public class MultiSelectionnAlertDialog extends DialogFragment implements Dialog
         args.putStringArray(PARAM_ITEMS, items);
         args.putBooleanArray(PARAM_SELECTED_ITEMS, selectedItems);
 
-        MultiSelectionnAlertDialog fragment = new MultiSelectionnAlertDialog();
+        MultiSelectionAlertDialog fragment = new MultiSelectionAlertDialog();
         fragment.setArguments(args);
         return fragment;
     }

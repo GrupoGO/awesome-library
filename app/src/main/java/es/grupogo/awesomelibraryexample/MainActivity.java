@@ -14,10 +14,10 @@ import es.grupogo.awesomelibrary.AwesomeFunction;
 import es.grupogo.awesomelibrary.BadgeView;
 import es.grupogo.awesomelibrary.CustomAlertDialog;
 import es.grupogo.awesomelibrary.LocationManager;
-import es.grupogo.awesomelibrary.MultiSelectionnAlertDialog;
+import es.grupogo.awesomelibrary.MultiSelectionAlertDialog;
 import es.grupogo.awesomelibrary.SingleSelectionAlertDialog;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, CustomAlertDialog.CustomDialogCallback, MultiSelectionnAlertDialog.CustomDialogCallback, SingleSelectionAlertDialog.CustomDialogCallback{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, CustomAlertDialog.CustomDialogCallback, MultiSelectionAlertDialog.CustomDialogCallback, SingleSelectionAlertDialog.CustomDialogCallback{
 
     private static final String TAG_DIALOG = "dialog";
     private LocationManager locationManager;
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 CustomAlertDialog.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}).show(getSupportFragmentManager(), TAG_DIALOG);
                 break;
             case R.id.button_3:
-                MultiSelectionnAlertDialog.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}, new boolean[]{false, true, true}, "Ok", "Cancel").show(getSupportFragmentManager(), TAG_DIALOG);
+                MultiSelectionAlertDialog.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}, new boolean[]{false, true, true}, "Ok", "Cancel").show(getSupportFragmentManager(), TAG_DIALOG);
                 break;
             case R.id.button_4:
                 SingleSelectionAlertDialog.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}, 0, "Ok", "Cancel").show(getSupportFragmentManager(), TAG_DIALOG);
