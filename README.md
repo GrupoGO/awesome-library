@@ -16,7 +16,7 @@ You will also need to add this line in the dependencies of your build.gradle mod
 
 ```
 dependencies {
-    compile 'com.github.GrupoGO:awesome-library:1.0'
+    compile 'com.github.GrupoGO:awesome-library:2.0'
 }
 ```
 
