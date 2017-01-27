@@ -25,10 +25,7 @@ public class MultiSelectionAlertDialog extends DialogFragment implements DialogI
     private static final String PARAM_ITEMS = "param_items";
     private static final String PARAM_SELECTED_ITEMS = "param_selected_items";
 
-
-
     public interface CustomDialogCallback {
-
         void onDialogPositiveClick(DialogFragment dialog, boolean[] selectedItems);
         void onDialogNegativeClick(DialogFragment dialog);
     }
