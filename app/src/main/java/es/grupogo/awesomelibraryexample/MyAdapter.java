@@ -7,32 +7,51 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import es.grupogo.awesomelibrary.StickyHeader.Section;
+import es.grupogo.awesomelibrary.StickyHeader.SectionAdapter;
+import es.grupogo.awesomelibrary.StickyHeader.StickyHeaderRecyclerView;
+
 /**
  * Created by jorge_cmata on 26/1/17.
  */
 
-public class MyAdapter extends RecyclerView.Adapter{
+public class MyAdapter extends SectionAdapter{
 
-    List<?> items;
+    private static final int ROW_ITEM = 0;
+    private static final int ROW_HEADER = 1;
 
-    public MyAdapter(List<?> items) {
-        this.items = items;
+    List<Section> sections;
+
+    public MyAdapter(List<Section> sections) {
+        this.sections = sections;
+        int i = 1;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        return new ItemViewHolder(layout);
+        if (viewType==ROW_ITEM) {
+            View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+            return new ItemViewHolder(layout);
+        } else {
+            View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+            return new HeaderViewHolder(layout);
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((ItemViewHolder)holder).bind(items.get(position));
+        if (holder instanceof ItemViewHolder) {
+            ((ItemViewHolder)holder).bind(sections.get(position).getObjects());
+        } else if (holder instanceof HeaderViewHolder) {
+            ((HeaderViewHolder)holder).bind(sections.get(position).getTitle());
+        }
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return sections.size();
     }
+
+
 }
