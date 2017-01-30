@@ -1,4 +1,4 @@
-package es.grupogo.awesomelibrary;
+package es.grupogo.awesomelibrary.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,13 +11,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
-import java.util.Arrays;
-
 /**
  * Created by Carlos Olmedo on 25/1/17.
  */
 
-public class SingleSelectionAlertDialog extends DialogFragment implements DialogInterface.OnClickListener {
+public class SingleSelectionDialogFragment extends DialogFragment implements DialogInterface.OnClickListener {
 
     private static final String PARAM_TITLE = "param_title";
     private static final String PARAM_POSITIVE = "param_positive";
@@ -38,7 +36,7 @@ public class SingleSelectionAlertDialog extends DialogFragment implements Dialog
     private int checkedItem = -1;
 
 
-    public static SingleSelectionAlertDialog newInstance(String title, String[] items, int checkedItem, String positiveButtonString, String negativeButtonString) {
+    public static SingleSelectionDialogFragment newInstance(String title, String[] items, int checkedItem, String positiveButtonString, String negativeButtonString) {
 
         Bundle args = new Bundle();
         args.putString(PARAM_TITLE, title);
@@ -47,12 +45,12 @@ public class SingleSelectionAlertDialog extends DialogFragment implements Dialog
         args.putStringArray(PARAM_ITEMS, items);
         args.putInt(PARAM_CHECKED_ITEM, checkedItem);
 
-        SingleSelectionAlertDialog fragment = new SingleSelectionAlertDialog();
+        SingleSelectionDialogFragment fragment = new SingleSelectionDialogFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-    public static SingleSelectionAlertDialog newInstance(String title, String[] items, String positiveButtonString, String negativeButtonString) {
+    public static SingleSelectionDialogFragment newInstance(String title, String[] items, String positiveButtonString, String negativeButtonString) {
 
         Bundle args = new Bundle();
         args.putString(PARAM_TITLE, title);
@@ -61,7 +59,7 @@ public class SingleSelectionAlertDialog extends DialogFragment implements Dialog
         args.putStringArray(PARAM_ITEMS, items);
         args.putInt(PARAM_CHECKED_ITEM, -1);
 
-        SingleSelectionAlertDialog fragment = new SingleSelectionAlertDialog();
+        SingleSelectionDialogFragment fragment = new SingleSelectionDialogFragment();
         fragment.setArguments(args);
         return fragment;
     }

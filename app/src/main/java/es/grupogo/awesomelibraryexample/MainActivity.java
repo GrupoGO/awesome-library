@@ -1,5 +1,6 @@
 package es.grupogo.awesomelibraryexample;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -10,14 +11,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import es.grupogo.awesomelibrary.AwesomeFunction;
 import es.grupogo.awesomelibrary.BadgeView;
-import es.grupogo.awesomelibrary.CustomAlertDialog;
+import es.grupogo.awesomelibrary.dialogs.CustomAlertDialog;
+import es.grupogo.awesomelibrary.dialogs.DatePickerDialogFragment;
 import es.grupogo.awesomelibrary.LocationManager;
-import es.grupogo.awesomelibrary.MultiSelectionAlertDialog;
-import es.grupogo.awesomelibrary.SingleSelectionAlertDialog;
+import es.grupogo.awesomelibrary.dialogs.MultiSelectionDialogFragment;
+import es.grupogo.awesomelibrary.dialogs.SingleSelectionDialogFragment;
+import es.grupogo.awesomelibrary.dialogs.TimePickerDialogFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, CustomAlertDialog.CustomDialogCallback, MultiSelectionAlertDialog.CustomDialogCallback, SingleSelectionAlertDialog.CustomDialogCallback{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,
+        CustomAlertDialog.CustomDialogCallback,
+        MultiSelectionDialogFragment.CustomDialogCallback,
+        SingleSelectionDialogFragment.CustomDialogCallback,
+        DatePickerDialogFragment.OnDateSetListener,
+TimePickerDialogFragment.OnDateSetListener{
 
     private static final String TAG_DIALOG = "dialog";
     private LocationManager locationManager;
@@ -86,10 +96,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 CustomAlertDialog.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}).show(getSupportFragmentManager(), TAG_DIALOG);
                 break;
             case R.id.button_3:
-                MultiSelectionAlertDialog.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}, new boolean[]{false, true, true}, "Ok", "Cancel").show(getSupportFragmentManager(), TAG_DIALOG);
+                MultiSelectionDialogFragment.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}, new boolean[]{false, true, true}, "Ok", "Cancel").show(getSupportFragmentManager(), TAG_DIALOG);
                 break;
             case R.id.button_4:
-                SingleSelectionAlertDialog.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}, 0, "Ok", "Cancel").show(getSupportFragmentManager(), TAG_DIALOG);
+                SingleSelectionDialogFragment.newInstance("Titulo", new String[]{"Uno", "Dos", "Tres"}, 0, "Ok", "Cancel").show(getSupportFragmentManager(), TAG_DIALOG);
+                break;
+            case R.id.button_5:
+                DatePickerDialogFragment.newInstance().show(getSupportFragmentManager(), TAG_DIALOG);
+                break;
+            case R.id.button_6:
+                TimePickerDialogFragment.newInstance().show(getSupportFragmentManager(), TAG_DIALOG);
                 break;
         }
     }
@@ -122,5 +138,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemSelected(DialogFragment dialog, int position) {
         Toast.makeText(this, "Item seleccionado " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDatePicked(Dialog dialog, Date date) {
+        Toast.makeText(this, date.toString(), Toast.LENGTH_SHORT).show();
+        Log.i("date dialog", date.toString());
+    }
+
+    @Override
+    public void onTimeSet(Dialog dialog, int hour, int minutes) {
+
+        Toast.makeText(this, String.format("%d horas %d minutos", hour, minutes), Toast.LENGTH_SHORT).show();
+        Log.i("date dialog", String.format("%d horas %d minutos", hour, minutes));
     }
 }

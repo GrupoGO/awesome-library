@@ -1,4 +1,4 @@
-package es.grupogo.awesomelibrary;
+package es.grupogo.awesomelibrary.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;

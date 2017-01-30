@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="mycircleview">
+        <attr name="cRadius" format="integer" />
+        <attr name="cFillColor" format="color" />
+        <attr name="cStrokeColor" format="color" />
+        <attr name="cAngleStart" format="integer" />
+        <attr name="cAngleEnd" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="dateTextView">
+        <attr name="dateMode" format="integer">
+            <enum name="modeNew" value="0"/>
+            <enum name="modeTask" value="1"/>
+            <enum name="modeChat" value="2"/>
+        </attr>
+    </declare-styleable>
+
+
+</resources>
