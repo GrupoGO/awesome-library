@@ -14,6 +14,8 @@ import java.util.SimpleTimeZone;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
+import es.grupogo.awesomelibrary.utils.DateUtils;
+
 
 /**
  * Created by Carlos Olmedo on 18/5/16.

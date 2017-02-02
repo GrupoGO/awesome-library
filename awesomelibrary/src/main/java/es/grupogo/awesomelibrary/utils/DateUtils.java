@@ -1,4 +1,4 @@
-package es.grupogo.awesomelibrary;
+package es.grupogo.awesomelibrary.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

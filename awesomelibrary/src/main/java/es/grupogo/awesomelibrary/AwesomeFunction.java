@@ -34,33 +34,6 @@ import java.util.Locale;
 public class AwesomeFunction {
 
 
-
-    public static ActionBar setupToolbar(AppCompatActivity activity, Toolbar toolbar, String title, @Nullable DrawerLayout drawerLayout) {
-
-        activity.setSupportActionBar(toolbar);
-
-        ActionBar actionBar = activity.getSupportActionBar();
-
-        if (actionBar!=null) {
-            if (title != null) {
-                actionBar.setTitle(title);
-            }
-
-            if (drawerLayout!=null) {
-                ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(
-                        activity,  drawerLayout, toolbar,
-                        R.string.open_drawer, R.string.close_drawer
-                );
-                drawerLayout.addDrawerListener(mDrawerToggle);
-                actionBar.setDisplayHomeAsUpEnabled(true);
-                actionBar.setHomeButtonEnabled(true);
-                mDrawerToggle.syncState();
-            }
-        }
-
-        return actionBar;
-    }
-
     /**
      * Convert dp to pixels
      * @param context context of the activity
@@ -72,19 +45,7 @@ public class AwesomeFunction {
 
     }
 
-    /**
-     * Change the background color of one Drawable object provided
-     * @param drawable drawable resource
-     * @param color desired color
-     * @return Drawable object with the color changed
-     */
-    public static Drawable tintDrawable(Drawable drawable, int color) {
 
-        Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
-        wrappedDrawable = wrappedDrawable.mutate();
-        DrawableCompat.setTint(wrappedDrawable, color);
-        return wrappedDrawable;
-    }
 
     /**
      * Enable of disable the translucent mode of the status bar
@@ -101,23 +62,6 @@ public class AwesomeFunction {
         }
     }
 
-    /**
-     * Share url opening the native android sharing dialog
-     * @param activity Current activity
-     * @param url url of the picture
-     */
-    public static void shareUrl(Activity activity, String url) {
-        if (url!=null) {
-            Intent shareIntent = ShareCompat.IntentBuilder.from(activity)
-                    .setType("text/plain")
-                    .setText(String.format(Locale.US, "%s", url))
-                    .getIntent();
-
-            if (shareIntent.resolveActivity(activity.getPackageManager()) != null) {
-                activity.startActivity(shareIntent);
-            }
-        }
-    }
 
     /**
      * Get the screen width

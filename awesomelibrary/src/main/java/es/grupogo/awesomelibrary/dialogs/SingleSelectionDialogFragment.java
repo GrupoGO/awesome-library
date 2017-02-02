@@ -142,14 +142,17 @@ public class SingleSelectionDialogFragment extends DialogFragment implements Dia
             return;
         }
 
-        switch (i) {
-            case DialogInterface.BUTTON_POSITIVE:
-                callback.onDialogPositiveClick(this, checkedItem);
-                break;
-            case DialogInterface.BUTTON_NEGATIVE:
-                callback.onDialogNegativeClick(this);
-                break;
+        if (callback!=null) {
 
+            switch (i) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    callback.onDialogPositiveClick(this, checkedItem);
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
+                    callback.onDialogNegativeClick(this);
+                    break;
+
+            }
         }
     }
 
