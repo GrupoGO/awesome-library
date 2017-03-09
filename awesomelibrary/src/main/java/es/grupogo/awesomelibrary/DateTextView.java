@@ -54,7 +54,7 @@ public class DateTextView extends TextView {
     public void setDate(Date date) {
 
         if(date==null){
-            setText("");
+            setText(" ");
             return;
         }
 
