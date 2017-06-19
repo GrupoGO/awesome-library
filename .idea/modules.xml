@@ -4,9 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AwesomeLibrary.iml" filepath="$PROJECT_DIR$/AwesomeLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/awesome-library.iml" filepath="$PROJECT_DIR$/awesome-library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/awesomelibrary/awesomelibrary.iml" filepath="$PROJECT_DIR$/awesomelibrary/awesomelibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/awesomelibrary/awesomelibrary.iml" filepath="$PROJECT_DIR$/awesomelibrary/awesomelibrary.iml" />
     </modules>
   </component>
