@@ -3,6 +3,7 @@ package es.grupogo.awesomelibrary;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -20,7 +21,7 @@ import es.grupogo.awesomelibrary.utils.DateUtils;
 /**
  * Created by Carlos Olmedo on 18/5/16.
  */
-public class DateTextView extends TextView {
+public class DateTextView extends AppCompatTextView {
 
     private static final int MODE_NEW = 0;
     private static final int MODE_TASK = 1;

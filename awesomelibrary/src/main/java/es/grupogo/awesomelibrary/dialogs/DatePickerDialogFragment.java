@@ -100,6 +100,10 @@ public class DatePickerDialogFragment extends DialogFragment implements DatePick
         }
     }
 
+    public void setOnDateSetListener(OnDateSetListener listener) {
+        callback = listener;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

@@ -84,23 +84,30 @@ public class CustomAlertDialog extends DialogFragment implements DialogInterface
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        Fragment targetFragment = getTargetFragment();
-        if (targetFragment!=null) {
-            try {
-                callback = (CustomDialogCallback) getTargetFragment();
-            } catch (ClassCastException e) {
-                e.printStackTrace();
-                Log.e("myApp", "Implementa AlertDialogClickListener en el fragment " + targetFragment.toString());
-            }
-        } else {
-            Log.e("myApp", "TargetFragment es null");
-            try {
-                callback = (CustomDialogCallback) getActivity();
-            } catch (ClassCastException e) {
-                e.printStackTrace();
-                Log.e("myApp", "Implementa AlertDialogClickListener en la activity " + getActivity().toString());
+        if (callback==null) {
+            Fragment targetFragment = getTargetFragment();
+            if (targetFragment != null) {
+                try {
+                    callback = (CustomDialogCallback) getTargetFragment();
+                } catch (ClassCastException e) {
+                    e.printStackTrace();
+                    Log.e("myApp", "Implementa AlertDialogClickListener en el fragment " + targetFragment.toString());
+                }
+            } else {
+                Log.e("myApp", "TargetFragment es null");
+                try {
+                    callback = (CustomDialogCallback) getActivity();
+                } catch (ClassCastException e) {
+                    e.printStackTrace();
+                    Log.e("myApp", "Implementa AlertDialogClickListener en la activity " + getActivity().toString());
+                }
             }
         }
+    }
+
+
+    public void setCallback(CustomDialogCallback callback) {
+        this.callback = callback;
     }
 
     @NonNull
